@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header>
+    <nav th:replace="fragments/commons::nav"></nav>
+</header>
+<main>
+    <div class="container bg-blur rounded mt-5 mb-4">
+
+        <div class="text-center">
+            <h1 ><strong>Cannot let you pass</strong></h1>
+            <img src="/images/stop.png" width="200" height="200" class="rounded" alt="...">
+            <h2>403</h2>
+            <h2 class="display-6">We are sorry but you do not have access to this page or resource.</h2>
+<!--            <button type="submit" class="btn btn-warning  mb-3" href="/">Back to Home Page</button>-->
+            <a type="submit" class="btn btn-warning  mb-3" href="/">Back to Home Page</a>
+        </div>
+
+
+    </div>
+
+
+    </div>
+
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+<script th:replace="fragments/commons::bsbundle"></script>
+</body>
+</html>

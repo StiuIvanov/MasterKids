@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header>
+    <nav th:replace="fragments/commons::nav"></nav>
+</header>
+<main>
+    <div class="container bg-blur rounded mt-5 mb-4">
+
+        <div  class="text-center">
+            <h1 ><strong>Person with id <th:block th:text="${personId}">{id}</th:block> doesn't exist</strong> </h1>
+            <img src="/images/not-found.png" width="200" height="200" class="rounded" alt="...">
+            <h4 >Please try again</h4>
+            <button class="btn btn-warning  mb-3" th:src="@{/}">Home</button>
+        </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+<script th:replace="fragments/commons::bsbundle"></script>
+</body>
+</html>

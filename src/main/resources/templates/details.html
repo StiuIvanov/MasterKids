@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header>
+    <nav th:include="fragments/commons::nav"></nav>
+
+</header>
+<main>
+    <div class="container bg-blur rounded mt-5 mb-4">
+                <div class="container-fluid row">
+                    <h2 class="text-center text-white mt-5">Details</h2>
+                    <div class="detail row mx-auto d-flex flex-row justify-content-center">
+                        <div th:object="${child}"
+                             class="card-details card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
+
+                            <div class="card-body pb-1">
+                                <h4 class="card-title bg-dark">Name: <span th:text="*{name}"></span></h4>
+                            </div>
+                            <ul class="card-details list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <div class="card-text"><span th:text="|Born: *{birthdate}|">Born</span></div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="card-text"><span th:text="|Age: *{getAge()}|">Age</span></div>
+                                </li>
+                            </ul>
+                            <ul class="card-details list-group list-group-flush">
+                                <li th:each="ac : ${child.activities}" class="list-group-item">
+                                    <div class="card-text"><span th:text="|Activity: ${ac.getActivity()}|"></span></div>
+
+                                </li>
+                            </ul>
+
+
+                            <th:block th:if="${activities.size()>0}">
+                                <div  class="card-body">
+                                    <form class="mt-5" id="form-save"
+                                          th:action="@{/child/save}"
+                                          th:object="${activityFormBindingModel}"
+                                          th:method="post">
+                                        <!--                                <option selected value="">Select activity</option>-->
+                                        <h6 class="bg-dark">Select activity</h6>
+                                        <select th:field="*{activity}" class="form-select"
+                                                aria-label="Default select example">
+                                            <!--                                <option th:each="activ : ${T(com.example.demo.model.entity.enums.ActivityEnum).values()}"-->
+                                            <!--                                        th:value="${activ.name()}" th:text="${activ.name()}"></option>-->
+                                            <option th:each="activ : ${activities}"
+                                                    th:value="${activ}" th:text="${activ}"></option>
+                                        </select>
+                                        <input type="hidden" th:field="${child.id}"/>
+                                        <button type="submit" role="button" form="form-save" name="submit"
+                                                class="btn btn-outline-primary">Save activity
+                                        </button>
+                                    </form>
+                                </div>
+
+                            </th:block>
+                            <a th:href="@{/child/{id}/remove-activity(id=${child.id})}" class="btn btn-primary  btn-sm" role="button"
+                               aria-pressed="true">Remove Activity Center</a>
+                        </div>
+                        <div th:object="${child}"
+                             class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
+                            <img class="card-img-top" th:src="*{getAvatarURL()}" alt="Avatar image">
+                        </div>
+                    </div>
+                </div>
+    </div>
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+<script th:replace="fragments/commons::bsbundle"></script>
+</body>
+</html>

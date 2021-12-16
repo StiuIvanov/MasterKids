@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header>
+    <nav th:replace="fragments/commons::nav"></nav>
+</header>
+<main>
+    <div class="container bg-blur rounded mt-5 mb-4">
+
+        <div class="text-center">
+            <img src="/images/alert.png" width="200" height="200" class="rounded" alt="...">
+            <h1 ><strong>Oops something went wrong</strong> </h1>
+            <h4 >Please try again</h4>
+            <a class="btn btn-warning  mb-3" href="/">Home</a>
+        </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+<script th:replace="fragments/commons::bsbundle"></script>
+</body>
+</html>
